@@ -1,0 +1,19 @@
+spring:
+  #数据库配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/acg?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: alice
+#mybatis 配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.springacg.entity
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+file-save-path: D:\Web\spring-boot-web-tests\src\main\resources\file\
+securityConfig:
+  saltConfigName: MD5
+  saltConfigNum: 2

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.springacg.mapper.MenuMapper">
+    <select id="getMenuList" resultMap="getMenuListResultMap">
+        select * from menu
+        <if test="name != null and name != ''">
+            where name like #{name}
+        </if>
+    </select>
+    <resultMap id="getMenuListResultMap" type="Menu">
+        <result property="id" column="id"></result>
+        <result property="name" column="name"></result>
+        <result property="sort" column="sort"></result>
+        <result property="parentId" column="parent_id"></result>
+        <result property="parentName" column="parent_name"></result>
+        <result property="timestamp" column="timestamp"></result>
+    </resultMap>
+    <insert id="addMenu">
+        insert into menu
+        (name, parent_id, parent_name, sort, timestamp)
+        values (#{name}, #{parentId}, #{parentName}, #{sort}, #{timestamp})
+    </insert>
+
+    <update id="updateMenu">
+        update menu set name = #{name}, sort = #{sort}, parent_id = #{parentId}, timestamp = #{timestamp}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteMenuById">
+        delete from menu
+        where id = #{id}
+    </delete>
+</mapper>

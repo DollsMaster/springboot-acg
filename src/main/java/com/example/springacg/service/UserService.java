@@ -49,6 +49,10 @@ public class UserService {
         return user;
     }
 
+    public User getUserByToken(Integer id) {
+        return userMapper.getUserById(id);
+    }
+
     public Integer registerUser(User user) {
         String password = user.getPassword();
         String salt = new SecureRandomNumberGenerator().nextBytes().toString();

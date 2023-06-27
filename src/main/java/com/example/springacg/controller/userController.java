@@ -35,9 +35,11 @@ public class userController {
     }
 
     @RequestMapping(value = "/getUserByToken/{token}", method = RequestMethod.GET)
-    public void getUserByToken(@PathVariable String token) {
-        System.out.println(StpUtil.getTokenInfo());
-
+    public ResponseStatus getUserByToken(@PathVariable String token) {
+        Object loginId = StpUtil.getTokenInfo().loginId;
+        Integer id = Integer.parseInt(loginId.toString());
+        User result = userService.getUserByToken(id);
+        return ResponseStatus.ok("success", result);
     }
 
     @RequestMapping(value = "/getUserList", method = RequestMethod.GET)

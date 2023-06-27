@@ -10,6 +10,8 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
+import javax.servlet.http.HttpServletResponse;
+
 @SpringBootConfiguration
 public class WebConfig extends WebMvcConfigurationSupport {
 
@@ -27,7 +29,7 @@ public class WebConfig extends WebMvcConfigurationSupport {
         registry.addResourceHandler("/file/**").addResourceLocations("classpath:/file/");
     }
 
-    /*
+
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new SaInterceptor(handle -> {
@@ -35,9 +37,11 @@ public class WebConfig extends WebMvcConfigurationSupport {
             if (!SaHolder.getRequest().getMethod().equals(HttpMethod.OPTIONS.toString())) {
                 StpUtil.checkLogin();
             }
-
         })).addPathPatterns("/**")
                 .excludePathPatterns("/login")
-                .excludePathPatterns("/loginOut");
-    }*/
+                .excludePathPatterns("/loginOut")
+                .excludePathPatterns("/menu/getMenuList")
+                .excludePathPatterns("/user/login")
+                .excludePathPatterns("/user/register");
+    }
 }

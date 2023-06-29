@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/user")
-public class userController {
+public class UserController {
     @Autowired
     UserService userService;
 
@@ -26,10 +26,6 @@ public class userController {
         } catch (RuntimeException runtimeException) {
             throw new MyException(runtimeException.getMessage());
         }
-
-
-        System.out.println("success");
-        System.out.println(userResult.toString());
         StpUtil.login(userResult.getId());
         return ResponseStatus.ok("success", userResult);
     }

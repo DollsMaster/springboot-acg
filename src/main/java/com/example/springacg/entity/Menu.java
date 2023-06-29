@@ -15,6 +15,7 @@ import java.util.ArrayList;
 @ToString
 public class Menu {
     private Long id;
+    private String url;
     private String name;
     private String sort;
     private Long parentId;

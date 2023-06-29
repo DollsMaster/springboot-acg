@@ -36,9 +36,6 @@ public class MenuService {
             }
             firstMenu.setChildren(children);
         }
-
-        System.out.println("firstMenuListfirstMenuListfirstMenuListfirstMenuList");
-        System.out.println(firstMenuList.toString());
         return firstMenuList;
     }
     public Integer addMenu(Menu menu) {

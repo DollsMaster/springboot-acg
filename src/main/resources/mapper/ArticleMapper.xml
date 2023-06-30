@@ -3,7 +3,7 @@
 <mapper namespace="com.example.springacg.mapper.ArticleMapper">
     <insert id="addArticle">
         insert into article
-        (name,cover,content,tags,menus,downloads,status)
-        VALUES (#{name}, #{cover}, #{content}, #{tags}, #{menus}, #{downloads}, #{status})
+        (name,cover,content,tags,menus,downloads,status, files, create_time)
+        VALUES (#{name}, #{cover}, #{content}, #{tags}, #{menus}, #{downloads}, #{files}, #{status}, #{createTime})
     </insert>
 </mapper>

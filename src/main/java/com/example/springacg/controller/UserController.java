@@ -30,6 +30,16 @@ public class UserController {
         return ResponseStatus.ok("success", userResult);
     }
 
+    @RequestMapping(value = "/loginOut", method = RequestMethod.POST)
+    public ResponseStatus loginOut(@RequestBody User user) {
+        try {
+            StpUtil.logout(user.getId());
+            return ResponseStatus.ok("success");
+        } catch (Exception e) {
+            return ResponseStatus.error(e.getMessage());
+        }
+    }
+
     @RequestMapping(value = "/getUserByToken/{token}", method = RequestMethod.GET)
     public ResponseStatus getUserByToken(@PathVariable String token) {
         Object loginId = StpUtil.getTokenInfo().loginId;

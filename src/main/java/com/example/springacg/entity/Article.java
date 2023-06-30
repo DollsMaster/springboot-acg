@@ -17,5 +17,7 @@ public class Article {
     private String menus;
     private String tags;
     private String downloads;
+    private String createTime;
+    private String file;
     private int status;
 }

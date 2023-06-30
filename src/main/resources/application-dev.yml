@@ -13,7 +13,7 @@ pagehelper:
   reasonable: true
   support-methods-arguments: true
   params: count=countSql
-file-save-path: D:\Web\spring-boot-web-tests\src\main\resources\file\
+file-save-path: D:\GithubProject\springboot-acg\src\main\resources\file\
 securityConfig:
   saltConfigName: MD5
   saltConfigNum: 2

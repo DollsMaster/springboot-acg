@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class ArticleService {
@@ -17,9 +18,17 @@ public class ArticleService {
     ArticleMapper articleMapper;
     @Autowired
     PublicUtils publicUtils;
+
+    public ResponseStatus getArticleList(String[] idList) {
+        System.out.println("=========idList");
+        System.out.println(idList);
+        List<Article> articleList = articleMapper.getArticleList(idList);
+        return ResponseStatus.ok("success", articleList);
+    }
+
     public ResponseStatus addArticle(Article article) {
         article.setStatus(0);
-        article.setCreateTime(publicUtils.getTimestamp("yyyy-MM-dd hh:mm:ss"));
+        article.setCreateTime(publicUtils.getTimestamp("yyyy-MM-dd HH:mm:ss"));
         Integer result = articleMapper.addArticle(article);
         if (result.equals(1)) {
             return ResponseStatus.ok("success");

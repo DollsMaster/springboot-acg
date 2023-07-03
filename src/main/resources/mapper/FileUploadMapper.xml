@@ -3,7 +3,7 @@
 <mapper namespace="com.example.springacg.mapper.FileUploadMapper">
     <insert id="fileUpload" useGeneratedKeys="true" keyProperty="id">
         insert into files
-        (file_name, file_fullname, format, create_time)
+            (file_name, file_fullname, format, create_time)
         values (#{fileName}, #{fileFullName}, #{format}, #{createTime})
     </insert>
 </mapper>

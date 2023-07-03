@@ -3,6 +3,7 @@ package com.example.springacg.config;
 import cn.dev33.satoken.context.SaHolder;
 import cn.dev33.satoken.interceptor.SaInterceptor;
 import cn.dev33.satoken.stp.StpUtil;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -14,7 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 
 @SpringBootConfiguration
 public class WebConfig extends WebMvcConfigurationSupport {
-
+    @Value("${file-save-path}")
+    private String fileSavePath;
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
@@ -26,7 +28,7 @@ public class WebConfig extends WebMvcConfigurationSupport {
     }
     @Override
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/file/**").addResourceLocations("classpath:/file/");
+        registry.addResourceHandler("/file/**").addResourceLocations("file:" + fileSavePath);
     }
 
 

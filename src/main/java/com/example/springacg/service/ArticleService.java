@@ -19,11 +19,9 @@ public class ArticleService {
     @Autowired
     PublicUtils publicUtils;
 
-    public ResponseStatus getArticleList(String[] idList) {
-        System.out.println("=========idList");
-        System.out.println(idList);
-        List<Article> articleList = articleMapper.getArticleList(idList);
-        return ResponseStatus.ok("success", articleList);
+    public List<Article> getArticleList(String[] idList, String order, String srot) {
+        List<Article> articleList = articleMapper.getArticleList(idList, order, srot);
+        return articleList;
     }
 
     public ResponseStatus addArticle(Article article) {
@@ -35,5 +33,9 @@ public class ArticleService {
         } else {
             return ResponseStatus.error("error");
         }
+    }
+
+    public List<Article> getArticleListByIsBanner(Integer isBanner, Integer hot) {
+        return articleMapper.getArticleListByIsBanner(isBanner, hot);
     }
 }

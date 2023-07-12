@@ -3,6 +3,7 @@ package com.example.springacg.controller;
 import cn.dev33.satoken.stp.StpUtil;
 import com.example.springacg.config.MyException;
 import com.example.springacg.entity.User;
+import com.example.springacg.service.PersonInfoService;
 import com.example.springacg.service.UserService;
 import com.example.springacg.utils.ResponseStatus;
 import com.github.pagehelper.PageHelper;
@@ -17,6 +18,8 @@ import java.util.List;
 public class UserController {
     @Autowired
     UserService userService;
+    @Autowired
+    PersonInfoService personInfoService;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseStatus login(@RequestBody User user) {
@@ -60,7 +63,8 @@ public class UserController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ResponseStatus registerAccount(@RequestBody User user) {
         Integer result = userService.registerUser(user);
-        if (result == 1) {
+        Integer personInfoResult = personInfoService.initPersonInfo(user);
+        if (result == 1 && personInfoResult == 1) {
             return ResponseStatus.ok("success");
         }
         return ResponseStatus.error("error");

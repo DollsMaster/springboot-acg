@@ -5,12 +5,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.HashMap;
+
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString
 public class Article {
     private long id;
+    private int userId;
     private String name;
     private String cover;
     private String content;
@@ -20,4 +23,7 @@ public class Article {
     private String createTime;
     private String file;
     private int status;
+    private HashMap property;
+    private int isBanner;
+    private int isHot;
 }

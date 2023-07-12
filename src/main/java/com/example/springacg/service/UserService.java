@@ -18,6 +18,7 @@ import java.util.List;
 public class UserService {
     @Autowired
     UserMapper userMapper;
+
     @Value("${securityConfig.saltConfigName}")
     private String saltConfigName;
     @Value("${securityConfig.saltConfigNum}")

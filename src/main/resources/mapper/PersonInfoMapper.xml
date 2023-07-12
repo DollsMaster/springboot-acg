@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.springacg.mapper.PersonInfoMapper">
+    <select id="findPersonInfoByUserId" resultMap="PersonInfoResultMap">
+        select * from person_info
+        where user_id = #{userId}
+    </select>
+
+    <insert id="insertPersonInfo">
+        insert into person_info
+        (user_id, description, integral, articles, comments, fans, attentions)
+        values (#{userId}, #{description}, #{integral}, #{articles}, #{comments}, #{fans}, #{attentions})
+    </insert>
+
+    <resultMap id="PersonInfoResultMap" type="PersonInfo"></resultMap>
+</mapper>

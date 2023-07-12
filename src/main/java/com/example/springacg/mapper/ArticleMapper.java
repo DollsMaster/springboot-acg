@@ -8,6 +8,7 @@ import java.util.List;
 
 @Component
 public interface ArticleMapper {
-    List<Article> getArticleList(@Param("idList") String[] idList);
+    List<Article> getArticleList(@Param("idList") String[] idList, String order, String sort);
+    List<Article> getArticleListByIsBanner(Integer isBanner, Integer isHot);
     Integer addArticle(Article article);
 }

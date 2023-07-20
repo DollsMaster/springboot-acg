@@ -11,4 +11,5 @@ public interface ArticleMapper {
     List<Article> getArticleList(@Param("idList") String[] idList, String order, String sort);
     List<Article> getArticleListByIsBanner(Integer isBanner, Integer isHot);
     Integer addArticle(Article article);
+    List<Article> getArticleListByUserId(Integer userId);
 }

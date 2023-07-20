@@ -30,10 +30,7 @@ public class ArticleController {
         PageHelper.startPage(pageNo, pageSize);
         List<Article> articleList = articleService.getArticleList(idList, order, sort);
         PageInfo pageInfo = new PageInfo<>(articleList);
-        //return articleService.getArticleList(idList, order, sort);
-
         return ResponseStatus.ok(articleList, pageInfo);
-
     }
 
     @RequestMapping(value = "/getArticleListByIsBanner", method = RequestMethod.GET)
@@ -47,5 +44,11 @@ public class ArticleController {
     @RequestMapping(value = "/addArticle", method = RequestMethod.POST)
     public ResponseStatus addArticle(@RequestBody Article article) {
         return articleService.addArticle(article);
+    }
+
+    @RequestMapping(value = "/getArticleListByUserId", method = RequestMethod.GET)
+    public ResponseStatus getArticleListByUserId(@RequestParam Integer userId) {
+        List<Article> list = articleService.getArticleListByUserId(userId);
+        return ResponseStatus.ok("success", list);
     }
 }

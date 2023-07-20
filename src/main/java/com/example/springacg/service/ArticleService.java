@@ -21,6 +21,9 @@ public class ArticleService {
 
     public List<Article> getArticleList(String[] idList, String order, String srot) {
         List<Article> articleList = articleMapper.getArticleList(idList, order, srot);
+        for (int i = 0; i < articleList.size(); i++) {
+            //articleList.get(i).setProperty();
+        }
         return articleList;
     }
 
@@ -37,5 +40,9 @@ public class ArticleService {
 
     public List<Article> getArticleListByIsBanner(Integer isBanner, Integer hot) {
         return articleMapper.getArticleListByIsBanner(isBanner, hot);
+    }
+
+    public List<Article> getArticleListByUserId(Integer userId) {
+        return articleMapper.getArticleListByUserId(userId);
     }
 }

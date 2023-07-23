@@ -22,8 +22,5 @@ public class Article {
     private String downloads;
     private String createTime;
     private String file;
-    private int status;
     private HashMap property;
-    private int isBanner;
-    private int isHot;
 }

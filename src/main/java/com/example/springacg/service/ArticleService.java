@@ -28,7 +28,6 @@ public class ArticleService {
     }
 
     public ResponseStatus addArticle(Article article) {
-        article.setStatus(0);
         article.setCreateTime(publicUtils.getTimestamp("yyyy-MM-dd HH:mm:ss"));
         Integer result = articleMapper.addArticle(article);
         if (result.equals(1)) {
